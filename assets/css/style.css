@@ -1636,6 +1636,8 @@ img, svg { max-width: 100%; height: auto; display: block; }
 .final-cta {
   text-align: center;
   padding: 80px 24px;
+  max-width: 720px;
+  margin: 0 auto;
 }
 .final-cta h2 { color: var(--white); margin-bottom: 16px; }
 .final-cta p { color: rgba(255,255,255,0.85); font-size: 1.2rem; margin-bottom: 32px; }
@@ -1647,6 +1649,25 @@ img, svg { max-width: 100%; height: auto; display: block; }
 }
 .final-cta .btn-secondary { background: transparent; color: var(--white); border-color: var(--white); }
 .final-cta .btn-secondary:hover { background: var(--white); color: var(--navy); }
+
+@media (max-width: 768px) {
+  .final-cta {
+    padding: 56px 16px 64px;
+  }
+  .final-cta h2 {
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .final-cta p {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin-bottom: 28px;
+    max-width: 32ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 /* ------- Footer ------- */
 .site-footer {
