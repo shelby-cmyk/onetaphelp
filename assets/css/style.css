@@ -229,7 +229,7 @@ img, svg { max-width: 100%; height: auto; display: block; }
 /* ------- Cookie Banner + Modal ------- */
 .cookie-banner {
   position: fixed;
-  bottom: -200px;
+  bottom: 0;
   left: 0; right: 0;
   background: var(--white);
   color: var(--slate);
@@ -237,11 +237,17 @@ img, svg { max-width: 100%; height: auto; display: block; }
   border-top: 4px solid var(--coral);
   box-shadow: 0 -8px 32px rgba(18,40,67,0.18);
   z-index: 9000;
-  transition: bottom 0.4s ease;
+  transform: translateY(100%);
+  transition: transform 0.4s ease, visibility 0s linear 0.4s;
+  visibility: hidden;
   font-size: 0.95rem;
   line-height: 1.5;
 }
-.cookie-banner.visible { bottom: 0; }
+.cookie-banner.visible {
+  transform: translateY(0);
+  visibility: visible;
+  transition: transform 0.4s ease, visibility 0s;
+}
 .cookie-banner-inner {
   max-width: 1180px;
   margin: 0 auto;
@@ -2358,14 +2364,19 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     padding-top: 32px !important;
   }
 
-  /* COOKIE BANNER: don't overlap with mobile sticky bar; tighten layout */
+  /* COOKIE BANNER: don't overlap with mobile sticky bar; cap to viewport so
+     content + buttons are always reachable on short screens / iOS landscape. */
   .cookie-banner {
-    bottom: -240px;
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px)); /* above mobile sticky bar + iOS home indicator */
     padding: 14px 14px 14px 16px;
     border-radius: 16px 16px 0 0;
+    max-height: calc(100dvh - 96px - env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
-  .cookie-banner.visible {
-    bottom: 76px; /* sits above mobile sticky bar */
+  /* When hidden, slide fully off-screen including the bottom offset above the sticky bar */
+  .cookie-banner:not(.visible) {
+    transform: translateY(calc(100% + 76px + env(safe-area-inset-bottom, 0px)));
   }
   .cookie-banner-inner {
     grid-template-columns: 1fr !important;
@@ -2380,25 +2391,9 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     line-height: 1.45;
     margin: 0;
   }
-  .cookie-banner-actions {
-    flex-direction: row !important;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: stretch;
-  }
-  .cookie-banner-actions .cookie-btn {
-    flex: 1 1 calc(50% - 4px);
-    min-width: 0;
-    padding: 11px 8px !important;
-    font-size: 0.85rem !important;
-  }
-  .cookie-banner-actions .cookie-btn-primary {
-    flex-basis: 100%;
-    order: -1; /* primary CTA on top */
-  }
 
   /* Ensure body padding-bottom accounts for BOTH mobile bar + cookie banner */
-  body { padding-bottom: 76px; }
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
 }
 
 /* Tiny screens — stack cookie buttons fully */
