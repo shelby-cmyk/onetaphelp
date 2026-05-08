@@ -2163,3 +2163,173 @@ html, body { overflow-x: hidden; max-width: 100vw; }
   .promo-banner strong { display: block; }
   .footer-trust-row { gap: 12px; flex-direction: column; align-items: flex-start; }
 }
+
+/* ================================================================
+   MOBILE HAMBURGER + DRAWER
+   ================================================================ */
+
+/* Hamburger button — hidden on desktop, shown on mobile */
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  margin-right: 4px;
+  border-radius: 8px;
+}
+.mobile-menu-toggle:hover { background: var(--blue-panel); }
+.mobile-menu-bar {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.mobile-menu-toggle[aria-expanded="true"] .mobile-menu-bar:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.mobile-menu-toggle[aria-expanded="true"] .mobile-menu-bar:nth-child(2) {
+  opacity: 0;
+}
+.mobile-menu-toggle[aria-expanded="true"] .mobile-menu-bar:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* Drawer */
+.mobile-drawer {
+  position: fixed;
+  top: 0; right: 0;
+  bottom: 0;
+  width: 88%;
+  max-width: 360px;
+  background: var(--white);
+  z-index: 9500;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 32px rgba(18, 40, 67, 0.18);
+  overflow-y: auto;
+}
+.mobile-drawer.open { transform: translateX(0); }
+
+.mobile-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 40, 67, 0.55);
+  z-index: 9400;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.mobile-drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-drawer-header {
+  padding: 20px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-soft);
+}
+.mobile-drawer-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--coral);
+}
+.mobile-drawer-close {
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--slate);
+}
+.mobile-drawer-close:hover { background: var(--cream); color: var(--navy); }
+
+.mobile-drawer-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  flex: 1;
+}
+.mobile-drawer-nav a {
+  padding: 16px 22px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mobile-drawer-nav a::after {
+  content: "›";
+  color: var(--slate-faint);
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+.mobile-drawer-nav a:hover { background: var(--cream); color: var(--coral); }
+.mobile-drawer-nav a:hover::after { color: var(--coral); }
+.mobile-drawer-nav a.current {
+  color: var(--coral);
+  background: var(--blue-faint);
+}
+.mobile-drawer-nav a.current::after { content: "•"; color: var(--coral); }
+
+.mobile-drawer-cta {
+  padding: 20px 22px;
+  background: var(--cream);
+  border-top: 1px solid var(--border-soft);
+}
+.mobile-drawer-phone {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--coral);
+  color: var(--white);
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+}
+.mobile-drawer-phone:hover { background: var(--coral-deep); color: var(--white); }
+.mobile-drawer-phone svg { width: 26px; height: 26px; fill: currentColor; flex-shrink: 0; }
+.mobile-drawer-phone span { display: flex; flex-direction: column; line-height: 1.2; }
+.mobile-drawer-phone small { font-size: 0.78rem; opacity: 0.9; letter-spacing: 0.5px; text-transform: uppercase; font-weight: 600; }
+.mobile-drawer-phone strong { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
+
+.mobile-drawer-trust {
+  padding: 14px 22px 20px;
+  text-align: center;
+  border-top: 1px solid var(--border-soft);
+  background: var(--white);
+}
+.mobile-drawer-trust small {
+  font-size: 0.78rem;
+  color: var(--slate-soft);
+  letter-spacing: 0.5px;
+}
+
+/* Show hamburger only on mobile */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+}
