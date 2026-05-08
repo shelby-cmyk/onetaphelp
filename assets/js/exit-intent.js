@@ -12,6 +12,7 @@
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Send Me an Answer</button>
           <small>We'll only use your email to reply. Unsubscribe with one click.</small>
         </form>
+        <button type="button" class="exit-modal-dismiss" id="exitModalDismiss">No thanks &mdash; close</button>
       </div>
     </div>
   `;
@@ -47,6 +48,8 @@
   }, { passive: true });
 
   close.addEventListener('click', hide);
+  const dismiss = document.getElementById('exitModalDismiss');
+  if (dismiss) dismiss.addEventListener('click', hide);
   modal.addEventListener('click', function(e) { if (e.target === modal) hide(); });
 
   form.addEventListener('submit', function(e) {
