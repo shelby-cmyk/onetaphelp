@@ -30,10 +30,11 @@
     '<span class="mobile-menu-bar"></span>' +
     '<span class="mobile-menu-bar"></span>';
 
-  // Insert into the nav area (right before the phone CTA), or into header if no nav
+  // Append to the end of nav so hamburger sits at the far right (after phone CTA)
+  // — natural thumb position on mobile, visually balances phone icon button.
   var nav = header.querySelector('.header-nav');
   if (nav) {
-    nav.insertBefore(hamburger, nav.firstChild);
+    nav.appendChild(hamburger);
   } else {
     header.appendChild(hamburger);
   }
