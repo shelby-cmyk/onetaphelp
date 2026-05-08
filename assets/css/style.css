@@ -1879,3 +1879,287 @@ img, svg { max-width: 100%; height: auto; display: block; }
   .pullquote { padding: 48px 16px; }
   .pullquote::before { font-size: 5rem; }
 }
+
+/* ================================================================
+   MOBILE SWEEP — comprehensive responsive overrides
+   Covers iPhone SE (375px) through iPad portrait (768px)
+   ================================================================ */
+
+/* No horizontal scroll, ever */
+html, body { overflow-x: hidden; max-width: 100vw; }
+
+@media (max-width: 768px) {
+  body { font-size: 17px; line-height: 1.55; }
+
+  h1 { font-size: clamp(1.85rem, 7vw, 2.6rem); }
+  h2 { font-size: clamp(1.5rem, 5.5vw, 2rem); }
+  h3 { font-size: 1.2rem; }
+
+  .container { padding: 0 16px; }
+
+  /* ----- Promo banner: stack vertically, no countdown crowding ----- */
+  .promo-banner {
+    padding: 10px 36px 10px 14px;
+    font-size: 0.85rem;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+  .promo-banner .countdown {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+  }
+  .countdown-num { font-size: 0.9rem; }
+  .countdown-label { font-size: 0.65rem; }
+  .banner-close {
+    right: 8px;
+    width: 24px; height: 24px;
+    font-size: 1rem;
+  }
+
+  /* ----- Header: shrink logo, hide nav links, keep phone CTA ----- */
+  .site-header { padding: 8px 0; }
+  .header-inner { padding: 6px 0; gap: 12px; }
+  .logo { height: 36px; }
+  .header-nav { gap: 0; }
+  .header-nav a:not(.header-phone) { display: none; }
+  .header-phone {
+    padding: 8px 14px;
+    font-size: 0.95rem;
+  }
+  .header-phone .phone-icon { width: 16px; height: 16px; }
+
+  /* ----- Hero (cinematic, homepage) ----- */
+  .hero { min-height: auto; }
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    padding: 56px 16px !important;
+  }
+  .hero-copy h1 { font-size: clamp(2rem, 7vw, 2.8rem); margin-bottom: 16px; }
+  .hero-sub { font-size: 1.05rem; margin-bottom: 24px; }
+  .hero-cta { gap: 10px; flex-direction: column; align-items: stretch; }
+  .hero-cta .btn-lg { width: 100%; padding: 14px 20px; font-size: 1rem; }
+  .hero-trust { gap: 16px; font-size: 0.9rem; }
+  .hero-trust-item { font-size: 0.85rem; }
+  .hero-product-card {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  .hero-product-card img { height: 140px; }
+  .hero-product-card-title { font-size: 1rem; }
+  .hero-product-card-price { font-size: 1.6rem; }
+
+  /* ----- Article-header pages (plans, faq, contact, etc.) ----- */
+  .article-header { padding: 40px 0 28px; }
+  .article-header .container { padding: 0 16px; }
+  .article-header h1 { font-size: clamp(1.85rem, 6.5vw, 2.4rem); }
+  .article-header .article-meta { font-size: 1rem; }
+
+  /* ----- Stats band ----- */
+  .stats-band { padding: 40px 0; }
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 12px;
+  }
+  .stat { padding: 0 8px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 18px; }
+  .stat:nth-last-child(-n+2) { border-bottom: none; padding-bottom: 0; }
+  .stat-number { font-size: 2rem; }
+  .stat-label { font-size: 0.85rem; }
+
+  /* ----- Sections / spacing ----- */
+  .section { padding: 48px 0; }
+  .section-tight { padding: 32px 0; }
+  .section-head { margin-bottom: 32px; }
+
+  /* ----- Steps (How it works) ----- */
+  .steps {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  .step-card { padding: 24px 20px; }
+  .step-num { width: 48px; height: 48px; font-size: 1.3rem; margin-bottom: 14px; }
+
+  /* ----- Feature blocks (homepage Home+/Go) ----- */
+  .feature-block {
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .feature-block-image { padding: 24px; }
+  .feature-block ul li { font-size: 0.95rem; }
+
+  /* ----- Pricing tiers ----- */
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  .tier {
+    padding: 28px 22px;
+    transform: none !important;
+  }
+  .tier-featured { transform: none !important; }
+  .tier-image img { max-height: 110px; }
+  .tier-price-amount { font-size: 2.4rem; }
+  .tier-features li { font-size: 0.95rem; }
+
+  /* ----- Why-us cards ----- */
+  .why-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  .why-card { padding: 20px 18px; }
+  .why-card h3 { font-size: 1.1rem; }
+  .why-card p { font-size: 0.95rem; }
+
+  /* ----- Cost compare ----- */
+  .cost-compare {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+  .cost-card { padding: 24px 20px; }
+  .cost-card.highlight { transform: none !important; }
+  .cost-card-amount { font-size: 2.2rem; }
+
+  /* ----- Pull quote ----- */
+  .pullquote { padding: 56px 16px; }
+  .pullquote::before { font-size: 5rem; }
+  .pullquote-text { font-size: 1.2rem; }
+
+  /* ----- Reviews / Promise / Commitments grid ----- */
+  .reviews-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+  .review { padding: 22px 20px; }
+  .review-quote { font-size: 0.95rem; }
+
+  /* ----- Final hero (closing section) ----- */
+  .final-hero { padding: 48px 16px; }
+  .final-hero-content h2 { font-size: clamp(2rem, 7vw, 2.8rem); }
+  .final-hero-content > p { font-size: 1.05rem; margin-bottom: 28px; }
+  .final-phone-block { padding: 24px 20px; }
+  .final-phone-block .phone { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .final-phone-block .hours { font-size: 0.9rem; }
+
+  /* ----- Compare table — horizontal scroll instead of cramming ----- */
+  .compare-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .compare-table th, .compare-table td {
+    padding: 10px 12px;
+    white-space: normal;
+    min-width: 110px;
+  }
+
+  /* ----- Footer ----- */
+  .site-footer { padding: 40px 0 16px; }
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px;
+  }
+  .footer-trust-row {
+    gap: 16px 24px;
+    padding: 20px 0;
+  }
+  .footer-trust-badge { font-size: 0.85rem; }
+  .footer-trust-badge svg { width: 22px; height: 22px; }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+  .footer-social { justify-content: flex-start; }
+
+  /* ----- Mobile sticky bar (must be visible on mobile) ----- */
+  .mobile-bar {
+    display: flex !important;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .mobile-bar a { padding: 12px; font-size: 0.95rem; }
+  body { padding-bottom: 76px; }
+
+  /* ----- Cookie banner ----- */
+  .cookie-banner-inner {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .cookie-banner h3 { font-size: 1rem; }
+  .cookie-banner p { font-size: 0.85rem; }
+  .cookie-banner-actions { flex-direction: column; }
+  .cookie-banner-actions .cookie-btn { width: 100%; padding: 12px; }
+
+  /* ----- Welcome (senior-direct) page ----- */
+  .welcome-header { padding: 14px 0; }
+  .welcome-header img.logo { height: 44px; }
+  .welcome-phone-big { font-size: 1.2rem; padding: 12px 18px; }
+  .welcome-phone-big svg { width: 22px; height: 22px; }
+  .welcome-hero { padding: 40px 0; }
+  .welcome-hero h1 { font-size: clamp(2rem, 7.5vw, 2.8rem); }
+  .welcome-hero p { font-size: 1.15rem; }
+  .welcome-cta-block { padding: 28px 20px; }
+  .welcome-cta-block a.phone { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .welcome-cta-block .hours { font-size: 0.95rem; }
+  .welcome-section { padding: 48px 0; }
+  .welcome-section h2 { font-size: clamp(1.8rem, 6.5vw, 2.4rem); }
+  .welcome-step-num { width: 56px; height: 56px; font-size: 1.6rem; margin-bottom: 14px; }
+  .welcome-step h3 { font-size: 1.3rem; }
+  .welcome-step p { font-size: 1.05rem; }
+  .welcome-trust-item h3 { font-size: 1.2rem; }
+  .welcome-trust-item p { font-size: 1rem; }
+
+  /* ----- Quiz ----- */
+  .quiz-container { padding: 24px 18px; }
+  .quiz-question h2 { font-size: 1.4rem; }
+  .quiz-option {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    gap: 12px;
+  }
+  .quiz-option-icon { width: 24px; height: 24px; }
+
+  /* ----- Forms (contact) ----- */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px;
+  }
+  .contact-form { padding: 24px 18px; }
+  .form-row { grid-template-columns: 1fr !important; gap: 12px; }
+  .form-group input, .form-group select, .form-group textarea {
+    font-size: 16px; /* prevents iOS auto-zoom on focus */
+    padding: 12px 14px;
+  }
+  .big-phone { font-size: 1.35rem !important; }
+
+  /* ----- Buttons (touch targets) ----- */
+  .btn { padding: 13px 22px; font-size: 1rem; min-height: 44px; }
+  .btn-lg { padding: 15px 24px; font-size: 1.05rem; }
+  .btn-sm { padding: 10px 16px; font-size: 0.9rem; }
+
+  /* ----- Final hero buttons stack on mobile ----- */
+  .final-cta-buttons,
+  .hero-cta {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  .final-cta-buttons .btn,
+  .hero-cta .btn { width: 100%; }
+}
+
+/* Tiny screens (iPhone SE etc.) */
+@media (max-width: 380px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat:nth-last-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 18px; }
+  .stat:last-child { border-bottom: none; padding-bottom: 0; }
+  .promo-banner { font-size: 0.8rem; }
+  .promo-banner strong { display: block; }
+  .footer-trust-row { gap: 12px; flex-direction: column; align-items: flex-start; }
+}
