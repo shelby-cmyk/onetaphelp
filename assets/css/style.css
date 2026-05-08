@@ -1778,6 +1778,65 @@ img, svg { max-width: 100%; height: auto; display: block; }
   margin-bottom: 16px;
 }
 
+/* ------- Add-on cards (plans page) ------- */
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.addon-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+.addon-card-image {
+  aspect-ratio: 1 / 1;
+  background: var(--cream);
+  overflow: hidden;
+}
+.addon-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.addon-card-body {
+  padding: 20px;
+}
+.addon-card-body h3 {
+  margin: 0 0 4px;
+  font-size: 1.15rem;
+}
+.addon-card-price {
+  font-size: 1.5rem;
+  color: var(--coral);
+  font-weight: 700;
+  margin: 4px 0 8px;
+}
+.addon-card-body p:not(.addon-card-price) {
+  font-size: 0.95rem;
+  margin: 0;
+  color: var(--slate-soft);
+  line-height: 1.55;
+}
+
+/* On narrow phones, smaller image so cards don't get too tall */
+@media (max-width: 480px) {
+  .addons-grid { grid-template-columns: 1fr; gap: 16px; }
+  .addon-card { flex-direction: row; align-items: stretch; }
+  .addon-card-image {
+    aspect-ratio: 1 / 1;
+    width: 130px;
+    flex-shrink: 0;
+  }
+  .addon-card-body { padding: 16px 18px; flex: 1; }
+  .addon-card-body h3 { font-size: 1.05rem; }
+  .addon-card-price { font-size: 1.3rem; }
+}
+
 /* ------- TCPA Consent Block ------- */
 .tcpa-consent-block {
   padding: 18px;
