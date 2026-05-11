@@ -1865,11 +1865,34 @@ img, svg { max-width: 100%; height: auto; display: block; }
   height: 24px;
   fill: var(--navy);
 }
+/* Brand colors */
+.as-seen-on-tv svg { fill: var(--navy); }
+.as-seen-on-facebook svg { fill: #1877F2; }
+
+/* TikTok signature offset-glyph treatment */
+.tiktok-glyph {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+.tiktok-glyph svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+}
+.tiktok-cyan { fill: #25F4EE; transform: translate(-1.5px, 1px); }
+.tiktok-magenta { fill: #FE2C55; transform: translate(1.5px, -1px); }
+.tiktok-black { fill: #000; }
+
 @media (max-width: 768px) {
   .as-seen-on { padding: 22px 0; }
   .as-seen-on-channels { gap: 20px; }
   .as-seen-on-channel { font-size: 0.95rem; }
   .as-seen-on-channel svg { width: 20px; height: 20px; }
+  .tiktok-glyph, .tiktok-glyph svg { width: 20px; height: 20px; }
 }
 
 /* ------- Form factors grid (plans page) ------- */
