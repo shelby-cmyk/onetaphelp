@@ -1860,14 +1860,14 @@ img, svg { max-width: 100%; height: auto; display: block; }
   color: var(--navy);
   letter-spacing: 0.3px;
 }
-.as-seen-on-channel svg {
+.as-seen-on-channel > svg {
   width: 24px;
   height: 24px;
   fill: var(--navy);
 }
 /* Brand colors */
-.as-seen-on-tv svg { fill: var(--navy); }
-.as-seen-on-facebook svg { fill: #1877F2; }
+.as-seen-on-tv > svg { fill: var(--navy); }
+.as-seen-on-facebook > svg { fill: #1877F2; }
 
 /* TikTok signature offset-glyph treatment */
 .tiktok-glyph {
@@ -1875,6 +1875,7 @@ img, svg { max-width: 100%; height: auto; display: block; }
   display: inline-block;
   width: 24px;
   height: 24px;
+  flex-shrink: 0;
 }
 .tiktok-glyph svg {
   position: absolute;
@@ -1883,15 +1884,15 @@ img, svg { max-width: 100%; height: auto; display: block; }
   width: 24px;
   height: 24px;
 }
-.tiktok-cyan { fill: #25F4EE; transform: translate(-1.5px, 1px); }
-.tiktok-magenta { fill: #FE2C55; transform: translate(1.5px, -1px); }
-.tiktok-black { fill: #000; }
+.tiktok-glyph svg.tiktok-cyan { fill: #25F4EE; transform: translate(-2px, 1px); }
+.tiktok-glyph svg.tiktok-magenta { fill: #FE2C55; transform: translate(2px, -1px); }
+.tiktok-glyph svg.tiktok-black { fill: #000; }
 
 @media (max-width: 768px) {
   .as-seen-on { padding: 22px 0; }
   .as-seen-on-channels { gap: 20px; }
   .as-seen-on-channel { font-size: 0.95rem; }
-  .as-seen-on-channel svg { width: 20px; height: 20px; }
+  .as-seen-on-channel > svg { width: 20px; height: 20px; }
   .tiktok-glyph, .tiktok-glyph svg { width: 20px; height: 20px; }
 }
 
