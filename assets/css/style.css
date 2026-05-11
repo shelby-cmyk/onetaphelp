@@ -1827,6 +1827,86 @@ img, svg { max-width: 100%; height: auto; display: block; }
   .callout h3 { font-size: 1.1rem; }
 }
 
+/* ------- As Seen On row ------- */
+.as-seen-on {
+  padding: 28px 0;
+  background: var(--cream);
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  text-align: center;
+}
+.as-seen-on-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--slate-soft);
+  margin-bottom: 10px;
+}
+.as-seen-on-channels {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.as-seen-on-channel {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: 0.5px;
+}
+.as-seen-on-dot {
+  color: var(--coral);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  .as-seen-on { padding: 20px 0; }
+  .as-seen-on-channel { font-size: 1rem; }
+}
+
+/* ------- Form factors grid (plans page) ------- */
+.form-factors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+.form-factor {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-soft);
+}
+.form-factor-emoji {
+  font-size: 2.4rem;
+  display: block;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+.form-factor strong {
+  display: block;
+  color: var(--navy);
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+.form-factor p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--slate-soft);
+  line-height: 1.45;
+}
+@media (max-width: 768px) {
+  .form-factors-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .form-factor { padding: 18px 14px; }
+  .form-factor-emoji { font-size: 2rem; }
+  .form-factor strong { font-size: 0.95rem; }
+  .form-factor p { font-size: 0.82rem; }
+}
+
 /* ------- Add-on cards (plans page) ------- */
 .addons-grid {
   display: grid;
