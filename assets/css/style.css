@@ -807,6 +807,16 @@ img, svg { max-width: 100%; height: auto; display: block; }
   align-items: end;
 }
 .hero-copy { color: var(--white); }
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #FFD89A;
+  margin-bottom: 14px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
 .hero-copy h1 {
   color: var(--white);
   margin-bottom: 24px;
@@ -2813,6 +2823,10 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     text-shadow: none !important;
   }
   .hero-copy h1 em { color: var(--coral) !important; }
+  .hero-eyebrow {
+    color: var(--coral) !important;
+    text-shadow: none !important;
+  }
   .hero-sub {
     color: var(--slate-soft) !important;
     text-shadow: none !important;
