@@ -19,6 +19,51 @@
   'use strict';
 
   // ============================================================
+  // GOOGLE TAG MANAGER — consent-gated loader
+  // Replace GTM-XXXXXXX with your real container ID. GTM is only
+  // injected after the visitor grants analytics or marketing consent
+  // through the cookie banner, so nothing loads until opt-in.
+  // Configure GA4 / Meta Pixel / TikTok Pixel as tags inside GTM and
+  // trigger them on the "oth_consent_granted" dataLayer event.
+  // ============================================================
+  var GTM_ID = 'GTM-XXXXXXX';
+  var gtmInjected = false;
+
+  function injectGTM() {
+    if (gtmInjected || !GTM_ID || GTM_ID === 'GTM-XXXXXXX') return;
+    gtmInjected = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = document.getElementsByTagName('script')[0];
+    var j = document.createElement('script');
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
+    f.parentNode.insertBefore(j, f);
+  }
+
+  // Inject GTM if consent is already on file (returning visitor), and
+  // whenever consent changes to granted. Pushes a clean trigger event.
+  function maybeLoadGTM() {
+    var ok = typeof window.OTH_HAS_CONSENT === 'function'
+      ? (window.OTH_HAS_CONSENT('analytics') || window.OTH_HAS_CONSENT('marketing'))
+      : false;
+    if (ok) {
+      injectGTM();
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'oth_consent_granted',
+        analytics_consent: window.OTH_HAS_CONSENT('analytics'),
+        marketing_consent: window.OTH_HAS_CONSENT('marketing')
+      });
+    }
+  }
+
+  document.addEventListener('oth:consent-change', function (e) {
+    var c = e.detail || {};
+    if (c.analytics || c.marketing) maybeLoadGTM();
+  });
+
+  // ============================================================
   // PHONE NUMBER MAP — source → display number
   // Replace these with real source-specific numbers from CallRail/Twilio.
   // Format: { display: '1-800-XXX-XXXX', tel: '18005551234' }
@@ -237,6 +282,7 @@
     captureUTM();
     swapPhoneNumbers();
     bindTracking();
+    maybeLoadGTM();
   }
 
   if (document.readyState === 'loading') {

@@ -2005,6 +2005,18 @@ img, svg { max-width: 100%; height: auto; display: block; }
   .addon-card-price { font-size: 1.3rem; }
 }
 
+/* ------- Form success / error states ------- */
+.form-success {
+  text-align: center;
+  padding: 24px 8px;
+}
+.form-success h2 { color: var(--navy); }
+.form-error {
+  color: #C0392B;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
 /* ------- TCPA Consent Block ------- */
 .tcpa-consent-block {
   padding: 18px;

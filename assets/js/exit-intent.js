@@ -55,10 +55,25 @@
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     const email = form.querySelector('input[name="email"]').value;
-    // Placeholder — wire to real endpoint or marketing automation later
-    console.log('Captured email:', email);
-    form.innerHTML = '<p style="font-weight: 600; color: var(--green-trust); padding: 16px 0;">✓ Got it! Check your inbox.</p>';
-    setTimeout(hide, 2500);
+    const payload = {
+      email: email,
+      lead_source: 'exit-intent',
+      submitted_at: new Date().toISOString(),
+      page: window.location.pathname
+    };
+    const done = function () {
+      if (window.dataLayer) {
+        window.dataLayer.push({ event: 'lead_submit', form: 'exit-intent', page: window.location.pathname });
+      }
+      form.innerHTML = '<p style="font-weight: 600; color: var(--green-trust); padding: 16px 0;">✓ Got it! Check your inbox.</p>';
+      setTimeout(hide, 2500);
+    };
+    // Route through the shared CRM submit handler if available
+    if (typeof window.OTH_SUBMIT_LEAD === 'function') {
+      window.OTH_SUBMIT_LEAD(payload).then(done).catch(done);
+    } else {
+      done();
+    }
   });
 
   document.addEventListener('keydown', function(e) {
