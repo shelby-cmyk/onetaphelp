@@ -24,7 +24,7 @@
     "name": "OneTapHelp",
     "url": "https://onetaphelp.com",
     "logo": "https://onetaphelp.com/assets/img/logo.svg",
-    "description": "Modern medical alert systems with 24/7 US-based monitoring. Plans from $29.95/mo. No long-term contracts.",
+    "description": "Modern medical alert from $44.95/mo. 24/7 US-based monitoring, fall detection, GPS, and family caregiver app — all included. No contracts.",
     "foundingDate": "2026",
     "telephone": "+1-800-TAP-HELP",
     "sameAs": []
@@ -120,21 +120,21 @@
           </div>
         </div>
 
-        <!-- Q3: Phone -->
+        <!-- Q3: Form factor preference -->
         <div class="quiz-question" data-question="3">
-          <h2>Is there a working home phone (landline)?</h2>
+          <h2>How would you prefer to wear it?</h2>
           <div class="quiz-options">
-            <button type="button" class="quiz-option" data-answer="yes-landline">
-              <svg class="quiz-option-icon" viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1 1 0 0 0-1.02.24l-2.2 2.2a15.05 15.05 0 0 1-6.59-6.59l2.2-2.2a1 1 0 0 0 .24-1.02A11.36 11.36 0 0 1 8.5 4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1c0 9.39 7.61 17 17 17a1 1 0 0 0 1-1v-3.5a1 1 0 0 0-1-1z"/></svg>
-              <span>Yes, there's a landline</span>
+            <button type="button" class="quiz-option" data-answer="pendant-style">
+              <svg class="quiz-option-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Around the neck or on a belt clip (Pendant)</span>
             </button>
-            <button type="button" class="quiz-option" data-answer="no-landline">
-              <svg class="quiz-option-icon" viewBox="0 0 24 24"><path d="M17 1.01 7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-              <span>No landline (cell phone only)</span>
+            <button type="button" class="quiz-option" data-answer="wristband-style">
+              <svg class="quiz-option-icon" viewBox="0 0 24 24"><path d="M16 1H8C6.34 1 5 2.34 5 4v16c0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3V4c0-1.66-1.34-3-3-3zm-4 21c-1.1 0-2-.9-2-2h4c0 1.1-.9 2-2 2zm5-4H7V4h10v14z"/></svg>
+              <span>On the wrist, like a watch (Wristband)</span>
             </button>
-            <button type="button" class="quiz-option" data-answer="unsure">
+            <button type="button" class="quiz-option" data-answer="either">
               <svg class="quiz-option-icon" viewBox="0 0 24 24"><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/></svg>
-              <span>I'm not sure</span>
+              <span>Either one — I'm not sure</span>
             </button>
           </div>
         </div>
@@ -261,30 +261,26 @@
       const totalQ = 4;
 
       const tiers = {
-        home: {
-          name: 'OneTapHelp Home',
-          tagline: 'In-home protection on your landline.',
-          description: 'A simple, reliable in-home system with a waterproof pendant and 1,000 ft range. Perfect for someone who has a working landline and primarily stays home. $29.95/mo.',
+        pendant: {
+          name: 'OneTapHelp Pendant',
+          tagline: 'Mobile protection — wear it your way.',
+          description: 'GPS-enabled mobile pendant with automatic fall detection, two-way voice, and 18+ day battery. Wear it on a lanyard or belt clip. Works at home, on a walk, or anywhere with cell coverage. Family caregiver app included. $44.95/mo + $119 activation.',
         },
-        homeplus: {
-          name: 'OneTapHelp Home+',
-          tagline: 'In-home protection without a landline.',
-          description: 'Built-in cellular through AT&T or T-Mobile — no phone line needed. 1,400 ft range from the base. Backup battery for power outages. $39.95/mo.',
-        },
-        go: {
-          name: 'OneTapHelp Go',
-          tagline: 'Mobile protection anywhere.',
-          description: 'GPS-enabled mobile pendant with automatic fall detection and two-way voice. Works anywhere with cell coverage — at home, on a walk, or running errands. $44.95/mo.',
+        wristband: {
+          name: 'OneTapHelp Wristband',
+          tagline: 'Watch-style. Always with you.',
+          description: 'The watch-style form factor that stays put on the wrist. HD two-way voice, automatic fall detection, step counter, and waterproof (IP67). Same 24/7 monitoring and family caregiver app — in a wearable that doesn’t get left behind. $49.95/mo + $119 activation.',
         }
       };
 
       function recommend() {
         const a = answers;
-        // Decision logic
-        if (a[2] === 'active' || a[4] === 'falls') return 'go';
-        if (a[3] === 'no-landline' || a[3] === 'unsure') return 'homeplus';
-        if (a[2] === 'home' && a[3] === 'yes-landline') return 'home';
-        return 'homeplus'; // default
+        // Decision logic — honor explicit form-factor preference first, then activity-based hint,
+        // then default to Pendant (highest take rate).
+        if (a[3] === 'wristband-style') return 'wristband';
+        if (a[3] === 'pendant-style') return 'pendant';
+        if (a[2] === 'active') return 'wristband';
+        return 'pendant';
       }
 
       function showQuestion(n) {
